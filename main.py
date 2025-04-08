@@ -1,14 +1,15 @@
 import pandas as pd
 import csv
 from datetime import datetime
+from typing import Any
 
 
 class CSV:
-    CSV_FILE = "finance_data.csv"
-    COLUMNS = ["date", "amount", "category", "description"]
+    CSV_FILE: str = "finance_data.csv"
+    COLUMNS: list[str] = ["date", "amount", "category", "description"]
 
     @classmethod
-    def initialize_csv(cls):
+    def initialize_csv(cls) -> None:
         try:
             pd.read_csv(cls.CSV_FILE)
         except FileNotFoundError:
@@ -16,8 +17,10 @@ class CSV:
             df.to_csv(cls.CSV_FILE, index=False)
 
     @classmethod
-    def add_entry(cls, date, amount, category, description):
-        new_entry = {
+    def add_entry(
+        cls, date: str, amount: float, category: str, description: str
+    ) -> None:
+        new_entry: dict[str, Any] = {
             "date": date,
             "amount": amount,
             "category": category,
