@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 class CSV:
     CSV_FILE: str = "finance_data.csv"
     COLUMNS: list[str] = ["date", "amount", "category", "description"]
-    FORMAT = "%d-%m-%Y"
+    FORMAT: str = "%d-%m-%Y"
 
     @classmethod
     def initialize_csv(cls) -> None:
@@ -36,7 +36,7 @@ class CSV:
         print("Entry added successfully")
 
     @classmethod
-    def get_transactions(cls, start_date, end_date):
+    def get_transactions(cls, start_date: str, end_date: str) -> pd.DataFrame:
         df = pd.read_csv(cls.CSV_FILE)
         df["date"] = pd.to_datetime(df["date"], format=CSV.FORMAT)
         start_date = datetime.strptime(start_date, CSV.FORMAT)
@@ -86,7 +86,7 @@ def add():
     CSV.add_entry(date, amount, category, description)
 
 
-def plot_transactions(df):
+def plot_transactions(df) -> None:
     df.set_index("date", inplace=True)
 
     income_df = (
