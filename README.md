@@ -60,7 +60,7 @@ The project is organized into a single folder:
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/HrsHristov/personal-finance-tracker
+    git clone https://github.com/HrsHristov/personal-finance-tracker.git
     cd personal-finance-tracker
     ```
 
